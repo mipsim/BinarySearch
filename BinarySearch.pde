@@ -66,8 +66,19 @@ public int binarySearch(int catNumToFind)
 
 public int recursiveBinarySearch(int catNumToFind, int nLow, int nHigh)
 {
-  //complete this method    
-  return -1;
+  if (nLow > nHigh)    
+    return -1;
+
+  int guess = (nLow + nHigh)/2;
+    
+  if (store[guess].getCatNum() > catNumToFind) 
+    return recursiveBinarySearch(catNumToFind, nLow, guess-1);
+
+  else if (store[guess].getCatNum() < catNumToFind) 
+    return recursiveBinarySearch(catNumToFind, guess+1, nHigh);
+
+  else
+    return store[guess].getInventory();
 }
 
 
